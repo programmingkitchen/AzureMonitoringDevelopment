@@ -1,0 +1,10 @@
+# Resource Group/Location
+variable "location" {}
+variable "application_name" {}
+variable "resource_type" {}
+variable "resource_group" {}
+
+# Tags
+variable "tags" {
+  type = map(string)
+}
