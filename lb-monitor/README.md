@@ -15,6 +15,18 @@
   5. Linux VM (Standard_B1s)
 
 
+## Alias
+
+```
+# Terraform
+alias tf='cd ~/Dropbox/IaC/MyIACWorkingCode/TerraformWorking/azure/'
+alias al='cd ~/Dropbox/IaC/MyIACWorkingCode/TerraformWorking/azure/AlertTest1/'
+alias tfi='terraform init'
+alias tfpl='terraform plan -out main.tfplan'
+alias tfap='terraform apply main.tfplan'
+alias tfd='terraform destroy -auto-approve'
+```
+
 ## Notes
 
 | Metric |	Exportable via diag | 	Metric |	Unit | Aggregation Type	| Description | 	Dimensions |
