@@ -69,9 +69,7 @@ module "pip" {
   tags         =  "${var.tags}"
 }
 
-
 #LB
-
 module "loadbalancer" {
   source       = "../modules/loadbalancer"
   lb_name       = "${var.lb_name}"
@@ -122,4 +120,10 @@ module "webserver" {
   vm_name         = "${var.prefix}-${var.web_vm_name}"
   username        = "${var.username}"
   tags         =  "${var.tags}"
+}
+
+# Observability pipeline
+module "observability" {
+  source       = "../modules/observability"
+  
 }
