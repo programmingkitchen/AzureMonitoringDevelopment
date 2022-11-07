@@ -60,6 +60,12 @@ variable "public_key" {}
 variable "web_nic_name" {}
 variable "web_vm_name" {}
 
+# Monitoring
+variable "ag_name" {}
+variable "short_name" {}
+variable "webhook_name" {}
+variable "service_uri" {}
+
 # Tags
 variable "tags" {
    description = "Map of the tags to use for the resources that are deployed"

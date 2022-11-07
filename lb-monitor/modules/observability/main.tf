@@ -11,23 +11,24 @@ add_auth
 */
 
 resource "azurerm_monitor_action_group" "main" {
-  name                = "MonitorTest-ag"
+  name                = "${var.ag_name}"
   resource_group_name = "${var.rg_name}"
-  short_name          = "Randall-ag"
+  short_name          = "${var.short_name}"
 
   webhook_receiver {
-    name        = "callmyapi"
-    service_uri = "http://example.com/alert"
+    name        = "${var.webhook_name}"
+    service_uri = "${var.service_uri}"
   }
   tags                   = "${var.tags}"
 }
 
+
 # https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported
 # Microsoft.Network/loadBalancers
-resource "azurerm_monitor_metric_alert" "example" {
+resource "azurerm_monitor_metric_alert" "lbhealth" {
   name                = "MonitorTest-metricalert"
   resource_group_name = "${var.rg_name}"
-  scopes              = [azurerm_lb.main.id]
+  scopes              = ["${var.lb_id}"]
   description         = "Some Message."
 
   criteria {
@@ -43,3 +44,27 @@ resource "azurerm_monitor_metric_alert" "example" {
   }
   tags                   = "${var.tags}"
 }
+
+
+/*
+resource "azurerm_monitor_metric_alert" "webhealth" {
+  name                = "MonitorTest-metricalert"
+  resource_group_name = "${var.rg_name}"
+  scopes              = ["${var.lb_id}"]
+  description         = "Some Message."
+
+  criteria {
+    metric_namespace = "Microsoft.Network/loadBalancers"
+    metric_name      = "DipAvailability"
+    aggregation      = "Average"
+    operator         = "LessThan"
+    threshold        = 100
+  }
+
+  action {
+    action_group_id = azurerm_monitor_action_group.main.id
+  }
+  tags                   = "${var.tags}"
+}
+
+*/

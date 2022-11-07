@@ -125,5 +125,12 @@ module "webserver" {
 # Observability pipeline
 module "observability" {
   source       = "../modules/observability"
-  
+  rg_name      = "${module.resource_group.resource_group_name}"
+  ag_name      = "${var.ag_name}"
+  short_name   = "${var.short_name}"
+  webhook_name  = "${var.webhook_name}"
+  service_uri   = "${var.service_uri}"
+  lb_id         = "${module.loadbalancer.lb_id}"
+  tags         =  "${var.tags}"
+
 }
