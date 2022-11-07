@@ -131,6 +131,7 @@ module "observability" {
   webhook_name  = "${var.webhook_name}"
   service_uri   = "${var.service_uri}"
   lb_id         = "${module.loadbalancer.lb_id}"
+  vm_id         = "${module.webserver.vm_id}"
   tags         =  "${var.tags}"
 
 }

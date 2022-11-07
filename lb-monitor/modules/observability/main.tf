@@ -46,16 +46,16 @@ resource "azurerm_monitor_metric_alert" "lbhealth" {
 }
 
 
-/*
-resource "azurerm_monitor_metric_alert" "webhealth" {
-  name                = "MonitorTest-metricalert"
+
+resource "azurerm_monitor_metric_alert" "webavail" {
+  name                = "MonitorTest-VMAvailability"
   resource_group_name = "${var.rg_name}"
-  scopes              = ["${var.lb_id}"]
-  description         = "Some Message."
+  scopes              = ["${var.vm_id}"]
+  description         = "Some Message.  Test availability."
 
   criteria {
-    metric_namespace = "Microsoft.Network/loadBalancers"
-    metric_name      = "DipAvailability"
+    metric_namespace = "Microsoft.Compute/virtualMachines"
+    metric_name      = "VMAvailabilityMetric"
     aggregation      = "Average"
     operator         = "LessThan"
     threshold        = 100
@@ -67,4 +67,4 @@ resource "azurerm_monitor_metric_alert" "webhealth" {
   tags                   = "${var.tags}"
 }
 
-*/
+
