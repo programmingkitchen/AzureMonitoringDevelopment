@@ -18,7 +18,13 @@ resource "azurerm_monitor_action_group" "main" {
   webhook_receiver {
     name        = "${var.webhook_name}"
     service_uri = "${var.service_uri}"
+    use_common_alert_schema = true
+    add_auth {
+      object_id = "276ae8d9-1101-4d50-9720-5a782a52d269"
+    }
   }
+
+
   tags                   = "${var.tags}"
 }
 
